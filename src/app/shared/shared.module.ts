@@ -4,12 +4,16 @@ import { BannerComponent } from './components/banner/banner.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { IconComponent } from './components/icon/icon.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
 
 @NgModule({
   declarations: [
     BannerComponent,
     MainMenuComponent,
-    IconComponent
+    FooterComponent,
+    IconComponent,
+    SvgIconComponent
   ],
   imports: [
     CommonModule,
@@ -18,6 +22,7 @@ import { IconComponent } from './components/icon/icon.component';
   exports: [
     BannerComponent,
     MainMenuComponent,
+    FooterComponent,
     IconComponent
   ]
 })

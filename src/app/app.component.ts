@@ -19,6 +19,11 @@ export class AppComponent {
    */
   isMenuVisible: Observable<boolean>;
 
+  /**
+   * Controlling visibility of menu component.
+   */
+  isFooterVisible: Observable<boolean>;
+
   private router = inject(Router);
   private route = inject(ActivatedRoute);
 
@@ -27,6 +32,7 @@ export class AppComponent {
   constructor() {
     this.isBannerVisible = this.getRouteFeatureState$('banner');
     this.isMenuVisible = this.getRouteFeatureState$('menu');
+    this.isFooterVisible = this.getRouteFeatureState$('footer');
   }
 
   /**
