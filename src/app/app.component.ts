@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter, map, Observable, startWith } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,36 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  /**
+   * Controlling visibility of banner component.
+   */
+  isBannerVisible: Observable<boolean>;
+
+  /**
+   * Controlling visibility of menu component.
+   */
+  isMenuVisible: Observable<boolean>;
+
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+
   title = 'the-mobile-hour-frontend';
+
+  constructor() {
+    this.isBannerVisible = this.getRouteFeatureState$('banner');
+    this.isMenuVisible = this.getRouteFeatureState$('menu');
+  }
+
+  /**
+   * Creating state observable from router event stream based on feature name.
+   * @param feature - name of the feature to get from router data.
+   */
+  private getRouteFeatureState$(feature: string): Observable<boolean> {
+    return this.router.events.pipe(
+      startWith(false),
+      filter(event => event instanceof NavigationEnd),
+      map(() => this.route.firstChild?.snapshot.data[feature] ?? true),
+      );
+  }
 }
