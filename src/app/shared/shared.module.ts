@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { BannerComponent } from './components/banner/banner.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { IconComponent } from './components/icon/icon.component';
 
 @NgModule({
   declarations: [
     BannerComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    IconComponent
   ],
   imports: [
     CommonModule,
@@ -15,7 +17,8 @@ import { AppRoutingModule } from '../app-routing.module';
   ],
   exports: [
     BannerComponent,
-    MainMenuComponent
+    MainMenuComponent,
+    IconComponent
   ]
 })
 export class SharedModule { }
