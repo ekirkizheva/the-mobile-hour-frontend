@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  { path: '', loadChildren: () => import('./pages/customer-area/customer-area.module').then(m => m.CustomerAreaModule) },
   { path: 'login', loadChildren: () => import('./pages/authentication/authentication.module').then(m => m.AuthenticationModule) },
-  { path: 'dashboard', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) }
+  // { path: 'admin', loadChildren: () => import('./pages/admin-area/admin-area.module').then(m => m.AdminAreaModule) },
 ];
 
 @NgModule({

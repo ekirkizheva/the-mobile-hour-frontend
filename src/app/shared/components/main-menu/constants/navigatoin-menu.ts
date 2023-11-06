@@ -1,16 +1,16 @@
 export const naviationMenu = [{
-    "name": "Home",
-    "url": "/"
+    name: "Home",
+    url: "/"
 },
 {
-    "name": "Products",
-    "url": "/products"
+    name: "Products",
+    url: "/products"
 },
 {
-    "name": "My Account",
-    "url": "/my-account"
+    name: "My Account",
+    url: "/account"
 },
 {
-    "name": "Contact Us",
-    "url": "/contact-us"
+    name: "Contact Us",
+    url: "/contacts"
 }] as const;

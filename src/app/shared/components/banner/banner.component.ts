@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./banner.component.scss']
 })
 export class BannerComponent {
+  /**
+   * Controls banner visibility.
+   */
+  isBannerVisible = true;
 
+  /**
+   * Hides banner. 
+   */
+  hide() {
+    this.isBannerVisible = false;
+  }
 }
