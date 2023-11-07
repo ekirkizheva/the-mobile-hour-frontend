@@ -1,4 +1,8 @@
-<app-banner *ngIf="isBannerVisible | async"></app-banner>
-<app-main-menu *ngIf="isMenuVisible | async"></app-main-menu>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<div class="flex flex-col h-screen justify-between">
+    <app-banner *ngIf="isBannerVisible | async" ></app-banner>
+    <app-main-menu *ngIf="isMenuVisible | async" ></app-main-menu>
+    <main class="mb-auto h-10 p-2">
+        <router-outlet ></router-outlet>
+    </main>
+    <app-footer *ngIf="isFooterVisible | async"></app-footer>
+</div>
