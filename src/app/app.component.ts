@@ -43,7 +43,7 @@ export class AppComponent {
     return this.router.events.pipe(
       startWith(false),
       filter(event => event instanceof NavigationEnd),
-      map(() => this.route.firstChild?.snapshot.data[feature] ?? true),
+      map(() => this.route.firstChild?.snapshot.data[feature] ?? this.route.firstChild?.firstChild?.snapshot.data[feature] ?? true),
       );
   }
 }
