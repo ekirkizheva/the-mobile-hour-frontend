@@ -6,10 +6,12 @@ import { AppRoutingModule } from '../app-routing.module';
 import { IconComponent } from './components/icon/icon.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     BannerComponent,
+    HeaderComponent,
     MainMenuComponent,
     FooterComponent,
     IconComponent,
@@ -21,6 +23,7 @@ import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
   ],
   exports: [
     BannerComponent,
+    HeaderComponent,
     MainMenuComponent,
     FooterComponent,
     IconComponent
