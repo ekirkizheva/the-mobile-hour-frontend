@@ -7,18 +7,18 @@ import { Component, Input } from '@angular/core';
 })
 export class IconComponent {
 
-  private _class = 'bg-slate-950';
+  private defaultClass = 'bg-slate-950';
 
   @Input() name = '';
 
   @Input() set class(cls: string) {
-    this._class = `bg-${cls}`;
+    this.defaultClass = `bg-${cls}`;
   }
 
   @Input() size = '2rem';
 
   get class() {
-    return this._class;
+    return this.defaultClass;
   }
 
   get iconURL() {

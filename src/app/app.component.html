@@ -1,7 +1,6 @@
 <div class="flex flex-col h-screen justify-between">
-    <app-banner *ngIf="isBannerVisible | async" ></app-banner>
-    <app-header></app-header>
-    <!-- <app-main-menu *ngIf="isMenuVisible | async" ></app-main-menu> -->
+    <app-banner *ngIf="isBannerVisible | async"></app-banner>
+    <app-header *ngIf="isHeaderVisible | async"></app-header>
     <main class="mb-auto overflow-auto p-2">
         <router-outlet ></router-outlet>
     </main>

@@ -15,12 +15,12 @@ export class AppComponent {
   isBannerVisible: Observable<boolean>;
 
   /**
-   * Controlling visibility of menu component.
+   * Controlling visibility of header component.
    */
-  isMenuVisible: Observable<boolean>;
+  isHeaderVisible: Observable<boolean>;
 
   /**
-   * Controlling visibility of menu component.
+   * Controlling visibility of footer component.
    */
   isFooterVisible: Observable<boolean>;
 
@@ -31,7 +31,7 @@ export class AppComponent {
 
   constructor() {
     this.isBannerVisible = this.getRouteFeatureState$('banner');
-    this.isMenuVisible = this.getRouteFeatureState$('menu');
+    this.isHeaderVisible = this.getRouteFeatureState$('header');
     this.isFooterVisible = this.getRouteFeatureState$('footer');
   }
 
