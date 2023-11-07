@@ -7,6 +7,8 @@ import { IconComponent } from './components/icon/icon.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,18 +17,20 @@ import { HeaderComponent } from './components/header/header.component';
     MainMenuComponent,
     FooterComponent,
     IconComponent,
-    SvgIconComponent
+    SvgIconComponent,
+    ProductCardComponent
   ],
   imports: [
     CommonModule,
-    AppRoutingModule
+    RouterModule
   ],
   exports: [
     BannerComponent,
     HeaderComponent,
     MainMenuComponent,
     FooterComponent,
-    IconComponent
+    IconComponent,
+    ProductCardComponent
   ]
 })
 export class SharedModule { }
