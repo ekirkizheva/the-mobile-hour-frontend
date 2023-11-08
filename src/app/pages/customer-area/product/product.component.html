@@ -22,13 +22,14 @@
                 </ng-container>
             </fieldset>
             <br> 
+            <h3 class="font-bold text-4xl">${{ prd.price }}</h3>
             <br>
-            <span class="text-sm">{{prd.stock}} in stock</span>
+            <span class="text-sm">{{ prd.stock }} in stock</span>
             <br>
             <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 inline-block w-16 p-1.5 mr-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="1" type="number"/> 
             <button class="primary small">Add to cart</button>
             <br>
-            <span class="text-sm">{{prd.sku}}</span>
+            <span class="text-sm">{{ prd.sku }}</span>
         </form>
     </article>
 </section>

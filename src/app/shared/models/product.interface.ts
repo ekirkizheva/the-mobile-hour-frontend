@@ -12,4 +12,5 @@ export interface Product {
         capacity: string[]
         sku: string;
         stock: number;
+        price: number;
 }

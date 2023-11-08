@@ -14,7 +14,8 @@ const MOCK_PRODUCTS: Products = {
   ],
   capacity: ['128GB', '256GB', '512GB', '1TB'],
   sku: 'SKU-000001',
-  stock: 100
+  stock: 100,
+  price: 799.00
  },
  2: { 
   label: 'Apple iPhone 100500',
@@ -25,7 +26,8 @@ const MOCK_PRODUCTS: Products = {
   ],
   capacity: ['512GB', '1TB'],
   sku: 'SKU-000002',
-  stock: 50
+  stock: 50,
+  price: 1099.00
  }
 } 
 
