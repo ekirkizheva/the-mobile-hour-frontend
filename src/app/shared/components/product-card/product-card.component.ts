@@ -13,6 +13,8 @@ export class ProductCardComponent {
 
   @Input() label = '';
 
+  @Input() price: string | number = '';
+
   @Input() cta = '';
 
 }

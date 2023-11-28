@@ -3,6 +3,7 @@ export interface Products {
 }
 
 export interface Product { 
+        brand: string;
         label: string;
         imageUrl: string;
         colorsAvailable: {

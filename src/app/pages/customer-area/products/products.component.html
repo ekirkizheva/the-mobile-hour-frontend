@@ -1,1 +1,34 @@
-<p>products works!</p>
+<section>
+    <select id="brands"  
+        [(ngModel)] = 'selectedBrand'
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 inline-block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        (change)="applyBrandFilter()">
+      <option selected value="all">All brands</option>
+      <option *ngFor="let brand of brands$ | async" [value]="brand">
+        {{ brand }}
+      </option>
+    </select>
+
+    <select id="price" 
+        [(ngModel)] = 'selectedSorting'
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 inline-block ml-2 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        (change)="applyPriceSort()">
+        <option selected value="none">Sort by</option>
+        <option value="lowest">Lowest price</option>
+        <option value="higest">Highest price</option>
+    </select>
+
+    <section *ngIf="products$ | async as products" class="flex flex-wrap justify-center flex-row p-2 md:p-10 gap-5 md:gap-20"> 
+        <ng-container *ngFor="let product of products">
+            <a routerLink="/product/1">
+                <app-product-card
+                    [imageUrl]="product.imageUrl"
+                    size="8rem"
+                    [label]="product.label"
+                    [price]="product.price"
+                    cta="Add to cart">
+                </app-product-card>
+            </a>
+        </ng-container>
+    </section>
+</section>
