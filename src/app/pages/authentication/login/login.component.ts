@@ -20,10 +20,7 @@ export class LoginComponent {
     private fb: FormBuilder,
     private identity: IdentityService,
     private router: Router,
-    private route: ActivatedRoute
-    ) {
-
-  }
+    ) { }
 
   onSubmit() {
 
