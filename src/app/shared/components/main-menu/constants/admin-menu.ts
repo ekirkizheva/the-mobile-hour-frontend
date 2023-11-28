@@ -1,4 +1,6 @@
-export const naviationMenu = [{
+import { MenuItem } from "src/app/shared/models/menu.interface";
+
+export const adminNavMenu: MenuItem[] = [{
     name: "Home",
     url: "/",
     mobileOnly: false
@@ -9,13 +11,18 @@ export const naviationMenu = [{
     mobileOnly: false
 },
 {
-    name: "My Account",
-    url: "/account",
+    name: "Manage Products",
+    url: "/manage-products",
     mobileOnly: false
 },
 {
-    name: "Contact Us",
-    url: "/contacts",
+    name: "Manage Users",
+    url: "/manage-users",
+    mobileOnly: false
+},
+{
+    name: "Change Log",
+    url: "/change-log",
     mobileOnly: false
 },
 {
@@ -32,4 +39,4 @@ export const naviationMenu = [{
     name: "Shopping Cart",
     url: "/cart",
     mobileOnly: true
-}] as const;
+}];
