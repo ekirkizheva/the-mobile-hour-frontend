@@ -12,17 +12,17 @@ export const adminNavMenu: MenuItem[] = [{
 },
 {
     name: "Manage Products",
-    url: "/manage-products",
+    url: "/admin/manage-products",
     mobileOnly: false
 },
 {
     name: "Manage Users",
-    url: "/manage-users",
+    url: "/admin/manage-users",
     mobileOnly: false
 },
 {
     name: "Change Log",
-    url: "/change-log",
+    url: "/admin/change-log",
     mobileOnly: false
 },
 {
