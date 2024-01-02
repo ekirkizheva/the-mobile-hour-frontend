@@ -19,8 +19,8 @@
     </select>
 
     <section *ngIf="products$ | async as products" class="flex flex-wrap justify-center flex-row p-2 md:p-10 gap-5 md:gap-20"> 
-        <ng-container *ngFor="let product of products">
-            <a routerLink="/product/1">
+        <ng-container *ngFor="let product of products; let i = index">
+            <a routerLink="/product/{{i+1}}">
                 <app-product-card
                     [imageUrl]="product.imageUrl"
                     size="8rem"

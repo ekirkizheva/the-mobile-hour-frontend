@@ -4,7 +4,7 @@ export const MOCK_PRODUCTS: Products = {
     1: { 
      brand: 'Samsung',
      label: 'Samsung Galaxy s99',
-     imageUrl: 'https://www.optus.com.au/content/dam/optus/images/shop/mobile/phones/samsung/samsung-galaxy-s23-fe/product-tiles/listing-samsung-galaxy-s23-fe.png/renditions/version-1698869826879/original.png',
+     imageUrl: 'assets/images/samsung.png',
      colorsAvailable: [
        { tag: 'Red', code:'#CE4E4E'},
        { tag: 'Silver Gray', code: '#898686'},
@@ -19,7 +19,7 @@ export const MOCK_PRODUCTS: Products = {
     2: { 
      brand: 'Apple',
      label: 'Apple iPhone 100500',
-     imageUrl: 'https://www.optus.com.au/content/dam/optus/images/shop/mobile/phones/apple/iphone-15-pro-max/carousel/SD-PDP-01-iphone-15-pro-max-natural-titanium-front-back.jpg/renditions/version-1694745846923/492.jpeg',
+     imageUrl: 'assets/images/iphone.png',
      colorsAvailable: [
        { tag: 'Silver Gray', code: '#898686'},
        { tag: 'Dark Green', code: '#2D3A29'},
@@ -32,7 +32,7 @@ export const MOCK_PRODUCTS: Products = {
     3: { 
         brand: 'Apple',
         label: 'Apple iPhone 123',
-        imageUrl: 'https://www.optus.com.au/content/dam/optus/images/shop/mobile/phones/apple/iphone-15-pro-max/carousel/SD-PDP-01-iphone-15-pro-max-natural-titanium-front-back.jpg/renditions/version-1694745846923/492.jpeg',
+        imageUrl: 'assets/images/iphone.png',
         colorsAvailable: [
           { tag: 'Silver Gray', code: '#898686'},
           { tag: 'Dark Green', code: '#2D3A29'},
@@ -46,7 +46,7 @@ export const MOCK_PRODUCTS: Products = {
     4: { 
         brand: 'Apple',
         label: 'Apple iPhone 567',
-        imageUrl: 'https://www.optus.com.au/content/dam/optus/images/shop/mobile/phones/apple/iphone-15-pro-max/carousel/SD-PDP-01-iphone-15-pro-max-natural-titanium-front-back.jpg/renditions/version-1694745846923/492.jpeg',
+        imageUrl: 'assets/images/iphone.png',
         colorsAvailable: [
           { tag: 'Silver Gray', code: '#898686'},
           { tag: 'Dark Green', code: '#2D3A29'},
@@ -59,7 +59,7 @@ export const MOCK_PRODUCTS: Products = {
     5: { 
         brand: 'Samsung',
         label: 'Samsung T100',
-        imageUrl: 'https://www.optus.com.au/content/dam/optus/images/shop/mobile/phones/apple/iphone-15-pro-max/carousel/SD-PDP-01-iphone-15-pro-max-natural-titanium-front-back.jpg/renditions/version-1694745846923/492.jpeg',
+        imageUrl: 'assets/images/iphone.png',
         colorsAvailable: [
             { tag: 'Silver Gray', code: '#898686'},
             { tag: 'Dark Green', code: '#2D3A29'},
@@ -72,7 +72,7 @@ export const MOCK_PRODUCTS: Products = {
     6: { 
         brand: 'Samsung',
         label: 'Samsung T200',
-        imageUrl: 'https://www.optus.com.au/content/dam/optus/images/shop/mobile/phones/apple/iphone-15-pro-max/carousel/SD-PDP-01-iphone-15-pro-max-natural-titanium-front-back.jpg/renditions/version-1694745846923/492.jpeg',
+        imageUrl: 'assets/images/iphone.png',
         colorsAvailable: [
             { tag: 'Silver Gray', code: '#898686'},
             { tag: 'Dark Green', code: '#2D3A29'},
@@ -85,7 +85,7 @@ export const MOCK_PRODUCTS: Products = {
     7: { 
         brand: 'Xiaomi',
         label: 'Xiaomi M5',
-        imageUrl: 'https://www.optus.com.au/content/dam/optus/images/shop/mobile/phones/apple/iphone-15-pro-max/carousel/SD-PDP-01-iphone-15-pro-max-natural-titanium-front-back.jpg/renditions/version-1694745846923/492.jpeg',
+        imageUrl: 'assets/images/iphone.png',
         colorsAvailable: [
             { tag: 'Silver Gray', code: '#898686'},
             { tag: 'Dark Green', code: '#2D3A29'},
@@ -98,7 +98,7 @@ export const MOCK_PRODUCTS: Products = {
     8: { 
         brand: 'Xiaomi',
         label: 'Xiaomi R2',
-        imageUrl: 'https://www.optus.com.au/content/dam/optus/images/shop/mobile/phones/apple/iphone-15-pro-max/carousel/SD-PDP-01-iphone-15-pro-max-natural-titanium-front-back.jpg/renditions/version-1694745846923/492.jpeg',
+        imageUrl: 'assets/images/iphone.png',
         colorsAvailable: [
             { tag: 'Silver Gray', code: '#898686'},
             { tag: 'Dark Green', code: '#2D3A29'},
