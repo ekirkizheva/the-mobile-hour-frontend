@@ -14,9 +14,7 @@ export class ChangeLogComponent {
   changeLog$: Observable<ChangeLog[]>;
 
   // Preserve original property order
-  originalOrder = (...args: any): number => {
-    return 0;
-  }
+  originalOrder = (...args: any): number => 0;
 
   constructor(private changeLogService: ChangeLogService) {
     this.changeLog$ = this.changeLogService.changeLog$;

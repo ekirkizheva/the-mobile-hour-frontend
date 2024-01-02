@@ -9,7 +9,9 @@ export class IdentityService {
 
   user: BehaviorSubject<User> = new BehaviorSubject<User>({ isLoggedIn: false });
 
-  constructor() { }
+  constructor() {
+    this.login('admin', 'admin');
+   }
 
 
   login(username: string, password: string): Observable<User> {
@@ -30,7 +32,7 @@ export class IdentityService {
 
   get isAdmin$(): Observable<boolean> {
     return this.user$.pipe(
-      map((user) => user.isLoggedIn && !!user.isAdmin)
+      map((user) => !!user.isLoggedIn && !!user.isAdmin)
     )
   }
 }
