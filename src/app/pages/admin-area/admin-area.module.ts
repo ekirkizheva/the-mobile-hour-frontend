@@ -5,6 +5,7 @@ import { AdminAreaRoutingModule } from './admin-area.routing.module';
 import { ChangeLogComponent } from './change-log/change-log.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { ManageProductsComponent } from './manage-products/manage-products.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ManageProductsComponent } from './manage-products/manage-products.compo
   ],
   imports: [
     CommonModule,
-    AdminAreaRoutingModule
+    AdminAreaRoutingModule,
+    SharedModule
   ]
 })
 export class AdminAreaModule { }

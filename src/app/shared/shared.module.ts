@@ -9,6 +9,7 @@ import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { RouterModule } from '@angular/router';
+import { ProductColorPipe } from './pipes/product-color.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RouterModule } from '@angular/router';
     FooterComponent,
     IconComponent,
     SvgIconComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ProductColorPipe
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { RouterModule } from '@angular/router';
     MainMenuComponent,
     FooterComponent,
     IconComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ProductColorPipe
   ]
 })
 export class SharedModule { }
