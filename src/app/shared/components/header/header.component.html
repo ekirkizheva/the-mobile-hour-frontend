@@ -2,10 +2,12 @@
     <div class="flex p-4">
         <h1 class="p-2 text-4xl text-gray-700">The Mobile Hour</h1>
         <div class="hidden md:flex gap-4 ml-auto ">
-            <a routerLink="/login" class="inline-flex gap-1">
-                <app-icon size="1.2rem" name="user"></app-icon>
-                <span class="self-center">Login</span>
-            </a>
+            <ng-container *ngIf="user$ | async as user">
+                <a routerLink="/login" class="inline-flex gap-1">
+                    <app-icon size="1.2rem" name="user"></app-icon>
+                    <span class="self-center">{{user.username ? user.username : 'Login'}}</span>
+                </a>
+            </ng-container>
             <a routerLink="/not-found" class="inline-flex gap-1">
                 <app-icon size="1.2rem" name="heart"></app-icon>
                 <span class="self-center">Shortlist</span>
@@ -14,6 +16,11 @@
                 <app-icon size="1.2rem" name="cart"></app-icon>
                 <span class="self-center">Cart</span>
             </a>
+            <ng-container *ngIf="user$ | async as user">
+                <a *ngIf="user.username" routerLink="/logout" class="inline-flex gap-1">
+                    <span class="self-center">Logout</span>
+                </a>
+            </ng-container>
         </div>
     </div>
     <app-main-menu class="ml-auto md:ml-0 self-center md:self-auto"></app-main-menu>
