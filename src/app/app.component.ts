@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, map, Observable, startWith } from 'rxjs';
+import { IdentityService } from './core/services/identity.service';
 
 @Component({
   selector: 'app-root',
@@ -29,10 +30,18 @@ export class AppComponent {
 
   title = 'the-mobile-hour-frontend';
 
-  constructor() {
+  constructor(private identityService: IdentityService) {
     this.isBannerVisible = this.getRouteFeatureState$('banner');
     this.isHeaderVisible = this.getRouteFeatureState$('header');
     this.isFooterVisible = this.getRouteFeatureState$('footer');
+
+    this.identityService.restoreUserFromSavedToken();
+
+    this.identityService.isAdmin$.subscribe((isAdmin) => {
+      if (isAdmin) {
+        this.router.navigate(['admin'])
+      }
+    });
   }
 
   /**

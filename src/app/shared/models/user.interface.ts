@@ -1,7 +1,8 @@
 export interface User {
-    username?: string;
-    isAdmin?: boolean;
-    isActive?: boolean;
-    created?: string;
-    isLoggedIn?: boolean;
+    username?: string,
+    firstname?: string,
+    lastname?: string,
+    user_role?: string,
+    iat?: number,
+    exp?: number
 }

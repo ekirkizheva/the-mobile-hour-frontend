@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, of, ReplaySubject, throwError } from 'rxjs';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { BehaviorSubject, map, Observable, switchMap, take, tap } from 'rxjs';
 import { User } from 'src/app/shared/models/user.interface';
 
 @Injectable({
@@ -7,23 +9,43 @@ import { User } from 'src/app/shared/models/user.interface';
 })
 export class IdentityService {
 
-  user: BehaviorSubject<User> = new BehaviorSubject<User>({ isLoggedIn: false });
+  user: BehaviorSubject<User> = new BehaviorSubject<User>({ });
 
-  constructor() {
-    this.login('admin', 'admin');
+  constructor(private http: HttpClient) {
+    // TODO: Remove for protecting admin login
+    // this.login('admin', 'admin');
    }
 
+  restoreUserFromSavedToken() {
+    const access_token = localStorage.getItem('auth');
 
-  login(username: string, password: string): Observable<User> {
-    if (username === 'admin' && password === 'admin') {
-      this.user.next({
-        username: 'admin',
-        isAdmin: true,
-        isLoggedIn: true
-      })
-      return this.user$;
-    } 
-    return throwError(() => new Error('Invalid username / password provided'))
+    if (access_token) {
+      const user = new JwtHelperService().decodeToken(access_token);
+
+      if (user.exp > (new Date()).getTime()) {
+        localStorage.removeItem('auth');
+      }
+
+      this.user.next(user);
+    }
+  }
+
+  login(username: string, password: string): Observable<any> {
+    return this.http.post<{access_token: string}>('/api/singin', {username, password}).pipe(
+      tap(({access_token}) => localStorage.setItem('auth', access_token)), 
+      tap(({access_token}) => this.user.next(new JwtHelperService().decodeToken(access_token) || {})),
+      switchMap(() => this.user$),
+      take(1));
+
+    // if (username === 'admin' && password === 'admin') {
+    //   this.user.next({
+    //     username: 'admin',
+    //     isAdmin: true,
+    //     isLoggedIn: true
+    //   })
+    //   return this.user$;
+    // } 
+    // return throwError(() => new Error('Invalid username / password provided'))
   }
 
   get user$(): Observable<User> {
@@ -32,7 +54,7 @@ export class IdentityService {
 
   get isAdmin$(): Observable<boolean> {
     return this.user$.pipe(
-      map((user) => !!user.isLoggedIn && !!user.isAdmin)
+      map((user) => user.user_role === 'admin')
     )
   }
 }
