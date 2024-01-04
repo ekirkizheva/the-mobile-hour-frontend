@@ -36,12 +36,6 @@ export class AppComponent {
     this.isFooterVisible = this.getRouteFeatureState$('footer');
 
     this.identityService.restoreUserFromSavedToken();
-
-    this.identityService.isAdmin$.subscribe((isAdmin) => {
-      if (isAdmin) {
-        this.router.navigate(['admin'])
-      }
-    });
   }
 
   /**

@@ -1,15 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BannerComponent } from './components/banner/banner.component';
-import { MainMenuComponent } from './components/main-menu/main-menu.component';
-import { AppRoutingModule } from '../app-routing.module';
-import { IconComponent } from './components/icon/icon.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
-import { HeaderComponent } from './components/header/header.component';
-import { ProductCardComponent } from './components/product-card/product-card.component';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ProductColorPipe } from './pipes/product-color.pipe';
+import { BannerComponent } from './components/banner/banner.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { IconComponent } from './components/icon/icon.component';
+import { MainMenuComponent } from './components/main-menu/main-menu.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
+import { ProductFeaturesPipe } from './pipes/product-color.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,7 @@ import { ProductColorPipe } from './pipes/product-color.pipe';
     IconComponent,
     SvgIconComponent,
     ProductCardComponent,
-    ProductColorPipe
+    ProductFeaturesPipe
   ],
   imports: [
     CommonModule,
@@ -33,7 +32,7 @@ import { ProductColorPipe } from './pipes/product-color.pipe';
     FooterComponent,
     IconComponent,
     ProductCardComponent,
-    ProductColorPipe
+    ProductFeaturesPipe
   ]
 })
 export class SharedModule { }

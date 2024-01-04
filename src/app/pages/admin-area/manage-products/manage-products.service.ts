@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/shared/models/product.interface';
 
 @Injectable({
@@ -7,10 +8,9 @@ import { Product } from 'src/app/shared/models/product.interface';
 })
 export class ManageProductsService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   get products$(): Observable<Product[]> {
-    return of([]);
-    //return of(Object.values(MOCK_PRODUCTS)) as Observable<Product[]>;
+    return this.http.get<Product[]>('/api/public/product');
   }
 }

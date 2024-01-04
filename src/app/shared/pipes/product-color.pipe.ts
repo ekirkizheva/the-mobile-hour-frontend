@@ -1,13 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'productColor'
+  name: 'productFeatures'
 })
-export class ProductColorPipe implements PipeTransform {
+export class ProductFeaturesPipe implements PipeTransform {
 
   transform(value: any): string {
-    if (Array.isArray(value) && Object.hasOwn(value[0], 'tag')) {
-      return value.map((item) => item.tag).join(', ');
+    if (Array.isArray(value) && value.length && Object.hasOwn(value[0], 'storage')) {
+      return `Storage: ${value.map((item) => item.storage).join(', ')}`;
     }
 
     return value;

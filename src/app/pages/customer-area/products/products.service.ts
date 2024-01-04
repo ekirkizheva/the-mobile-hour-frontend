@@ -14,10 +14,7 @@ export class ProductsService {
     return this.http.get<string[]>('/api/public/brands');
   }
 
-   get products$(): Observable<Product[]> {
-
+  get products$(): Observable<Product[]> {
     return this.http.get<Product[]>('/api/public/product');
-   }
-
-
+  }
 }
