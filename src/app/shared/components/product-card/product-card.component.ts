@@ -11,6 +11,8 @@ export class ProductCardComponent {
 
   @Input() imageUrl = '';
 
+  @Input() brand = '';
+
   @Input() label = '';
 
   @Input() price: string | number = '';

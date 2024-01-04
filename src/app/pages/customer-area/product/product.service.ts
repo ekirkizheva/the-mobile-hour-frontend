@@ -1,20 +1,25 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { MOCK_PRODUCTS } from 'src/app/shared/constants/products.mock';
-import { Product, Products } from 'src/app/shared/models/product.interface';
+import { map, Observable } from 'rxjs';
+import { Product } from 'src/app/shared/models/product.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   /**
    * Returns product by its id.
    * @param id - requires product id.
    */
   getProductById$(id: number): Observable<Product> {
-    return of(MOCK_PRODUCTS[id]);
+
+    return this.http.get<Product[]>(`/api/public/product/${id}`).pipe(
+      map((products) => products[0])
+    );
+    //const mock = MOCK_PRODUCTS as unknown as Product[];
+    //return of(mock[id]);
   }
 }

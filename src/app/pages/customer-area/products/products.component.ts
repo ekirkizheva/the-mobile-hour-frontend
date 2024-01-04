@@ -32,7 +32,7 @@ export class ProductsComponent {
         let _products:Product[] = products;
 
         if (filter !== 'all') {
-          _products = _products.filter((product) => product.brand === filter)
+          _products = _products.filter((product) => product.manufacturer === filter)
         }
 
         if (sort !== 'none') {

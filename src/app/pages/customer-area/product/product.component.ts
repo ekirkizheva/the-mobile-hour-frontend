@@ -13,7 +13,7 @@ import { ProductService } from './product.service';
 export class ProductComponent {
 
   // Storing observable of product.
-  product: Observable<Product>;
+  product$: Observable<Product>;
 
   productForm = this.fb.group({
     color: ['', Validators.required],
@@ -26,6 +26,6 @@ export class ProductComponent {
     private productService: ProductService,
     private fb: UntypedFormBuilder
     ) {
-    this.product = this.productService.getProductById$(this.route.snapshot.params['id']);
+    this.product$ = this.productService.getProductById$(this.route.snapshot.params['id']);
   }
 }

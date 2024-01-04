@@ -1,37 +1,66 @@
-<section *ngIf="product | async as prd" class="flex justify-center flex-col md:flex-row p-2 md:p-10 gap-5 md:gap-20">
-    <img class="w-full md:w-1/3 rounded-xl self-baseline" [src]="prd.imageUrl">
-    <article class="w-full md:w-1/3 text-lg">
-        <h2 class="font-bold text-2xl">{{prd.label}}</h2>
-        <br>
-        <br>
-        <form>
-            <fieldset class="flex" role="radiogroup">
-                    <legend>Choose your colour: </legend>
-                    <ng-container *ngFor="let color of prd.colorsAvailable">
-                        <input class="sr-only" name="colorOption" value="color.tag" type="radio" [id]="color.tag" /> 
-                        <label [style.background-color]="color.code" class="color-option" [for]="color.tag"></label>
-                    </ng-container>
-            </fieldset>
-            <br> 
-            <br>
-            <fieldset class="flex" role="radiogroup">
-                <legend>Choose your capacity</legend>
-                <ng-container *ngFor="let capacity of prd.capacity">
-                    <input class="sr-only" name="colorOption" value="capacity" type="radio" [id]="capacity" /> 
-                    <label class="capacity-option" [for]="capacity">{{ capacity }}</label>
-                </ng-container>
-            </fieldset>
-            <br> 
-            <h3 class="font-bold text-4xl">${{ prd.price }}</h3>
-            <br>
-            <span class="text-sm">{{ prd.stock }} in stock</span>
-            <br>
-            <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 inline-block w-16 p-1.5 mr-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value="1" type="number"/> 
-            <button class="primary small">Add to cart</button>
-            <br>
-            <span class="text-sm">{{ prd.sku }}</span>
-        </form>
-    </article>
+<section
+  *ngIf="product$ | async as prd"
+  class="flex justify-center flex-col md:flex-row p-2 md:p-10 gap-5 md:gap-20"
+>
+  <img
+    class="w-full md:w-1/3 rounded-xl self-baseline"
+    src="/assets/images/generic.png"
+  />
+  <article class="w-full md:w-1/3 text-lg">
+    <h2 class="font-bold text-2xl">{{ prd.manufacturer }}</h2>
+    <h3 class="text-2xl">{{ prd.product_name }} {{ prd.product_model }}</h3>
+    <br />
+    <br />
+    <form>
+      <!-- <fieldset class="flex" role="radiogroup">
+        <legend>Choose your colour:</legend>
+        <ng-container *ngFor="let color of prd.colorsAvailable">
+          <input
+            class="sr-only"
+            name="colorOption"
+            value="color.tag"
+            type="radio"
+            [id]="color.tag"
+          />
+          <label
+            [style.background-color]="color.code"
+            class="color-option"
+            [for]="color.tag"
+          ></label>
+        </ng-container>
+      </fieldset>
+      <br />
+      <br /> -->
+      <fieldset class="flex" role="radiogroup">
+        <legend>Choose your capacity</legend>
+        <ng-container *ngFor="let feature of prd.features">
+          <input
+            class="sr-only"
+            name="capacityOption"
+            value="capacity"
+            type="radio"
+            [id]="feature.storage"
+          />
+          <label class="capacity-option" [for]="feature.storage">{{
+            feature.storage
+          }}</label>
+        </ng-container>
+      </fieldset>
+      <br />
+      <h3 class="font-bold text-4xl">${{ prd.price }}</h3>
+      <br />
+      <span class="text-sm">{{ prd.stock_on_hand }} in stock</span>
+      <br />
+      <input
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 inline-block w-16 p-1.5 mr-4 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        value="1"
+        type="number"
+      />
+      <button class="primary small">Add to cart</button>
+      <br />
+      <!-- <span class="text-sm">{{ prd.sku }}</span> -->
+    </form>
+  </article>
 </section>
 
 <app-popular-products></app-popular-products>

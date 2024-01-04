@@ -1,7 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { MOCK_BRANDS } from 'src/app/shared/constants/brands.mock';
-import { MOCK_PRODUCTS } from 'src/app/shared/constants/products.mock';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/shared/models/product.interface';
 
 @Injectable({
@@ -9,13 +8,16 @@ import { Product } from 'src/app/shared/models/product.interface';
 })
 export class ProductsService {
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   get brands$(): Observable<string[]> {
-    return of(MOCK_BRANDS);
+    return this.http.get<string[]>('/api/public/brands');
   }
 
    get products$(): Observable<Product[]> {
-    return of(Object.values(MOCK_PRODUCTS));
+
+    return this.http.get<Product[]>('/api/public/product');
    }
+
+
 }

@@ -1,6 +1,7 @@
 <div class="flex flex-col justify-center items-center" [style.width]="size">
-    <img [src]="imageUrl">
-    <label *ngIf="label.length" class="h-14 pb-2 text-center"> {{ label }}</label>
-    <label *ngIf="price"> ${{ price }} </label>
-    <button *ngIf="cta.length" class="primary small"> {{ cta }} </button>
+  <img [src]="imageUrl" />
+  <strong *ngIf="brand.length">{{ brand }}</strong>
+  <label *ngIf="label.length" class="h-14 pb-2 text-center"> {{ label }}</label>
+  <label *ngIf="price"> ${{ price }} </label>
+  <button *ngIf="cta.length" class="primary small">{{ cta }}</button>
 </div>
