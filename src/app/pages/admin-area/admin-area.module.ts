@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { ManageProductsComponent } from './manage-products/manage-products.component';
 import { ManageUsersModifyComponent } from './manage-users-modify/manage-users-modify.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { ManageProductsModifyComponent } from './manage-products-modify/manage-products-modify.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
     ChangeLogComponent,
     ManageUsersComponent,
     ManageProductsComponent,
-    ManageUsersModifyComponent
+    ManageUsersModifyComponent,
+    ManageProductsModifyComponent
   ],
   imports: [
     CommonModule,
