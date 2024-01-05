@@ -12,18 +12,4 @@ export interface Product {
     price: number;
     stock_on_hand: number;
     features: Feature[];
-
-
-
-        // brand: string;
-        // label: string;
-        // imageUrl: string;
-        // colorsAvailable: {
-        //     tag: string;
-        //     code: string;
-        // }[];
-        // capacity: string[]
-        // sku: string;
-        // stock: number;
-        // price: number;
 }

@@ -1,46 +1,28 @@
-<!-- <table *ngIf="products$ | async as products" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-        <tr>
-            <th *ngFor="let header of products[0] | keyvalue: originalOrder" scope="col" class="px-6 py-3">
-               {{ header.key }} 
-            </th>
-            <th>
-                ACTIONS
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let entry of products" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <td *ngFor="let cell of entry | keyvalue: originalOrder" class="px-6 py-3">
-                {{ cell.value | productColor }}
-            </td>
-            <td>
-                <button class="primary small mx-2">Update</button>
-            </td>
-        </tr>
-    </tbody>
-</table> -->
+<section>
+    <table *ngIf="products$ | async as products" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th *ngFor="let header of products[0] | keyvalue: originalOrder" scope="col" class="px-6 py-3">
+                {{ header.key }} 
+                </th>
+                <th>
+                    ACTIONS
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let entry of products" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <td *ngFor="let cell of entry | keyvalue: originalOrder" class="px-6 py-3">
+                    {{ cell.value | productFeatures }}
+                </td>
+                <td>
+                    <button class="primary small mx-2">Update</button>
+                </td>
+            </tr>
+        </tbody>
+    </table> 
 
+    <br/>
 
-<table *ngIf="products$ | async as products" class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-        <tr>
-            <th *ngFor="let header of products[0] | keyvalue: originalOrder" scope="col" class="px-6 py-3">
-               {{ header.key }} 
-            </th>
-            <th>
-                ACTIONS
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let entry of products" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <td *ngFor="let cell of entry | keyvalue: originalOrder" class="px-6 py-3">
-                {{ cell.value | productFeatures }}
-            </td>
-            <td>
-                <button class="primary small mx-2">Update</button>
-            </td>
-        </tr>
-    </tbody>
-</table> 
+    <button routerLink="/admin/manage-products/add" role="link" class="primary small mx-2 text-sm">Add product</button>
+</section>

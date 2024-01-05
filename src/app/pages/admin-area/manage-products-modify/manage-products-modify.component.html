@@ -1,1 +1,31 @@
-<p>manage-products-modify works!</p>
+<section class="flex flex-col items-center justify-center py-5">
+    <h2 class="font-bold text-2xl py-5">{{ productId ? 'Modify' : 'Create new' }} product</h2>
+    <form [formGroup]="productForm" class="space-y-2 w-96" (ngSubmit)="onSubmit()">
+        <label for="product_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product name *</label>
+        <input formControlName="product_name" type="text" name="product_name" id="product_name" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+        <div *ngIf="productForm.get('product_name')?.touched && productForm.get('product_name')?.errors" class="my-2 text-red-600">This field is required</div>
+
+        <label for="product_model" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product model *</label>
+        <input formControlName="product_model" type="text" name="product_model" id="product_model" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+        <div *ngIf="productForm.get('product_model')?.touched && productForm.get('product_model')?.errors" class="my-2 text-red-600">This field is required</div>
+
+        <label for="manufacturer" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Manufacturer *</label>
+        <input formControlName="manufacturer" type="text" name="manufacturer" id="manufacturer" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+        <div *ngIf="productForm.get('manufacturer')?.touched && productForm.get('manufacturer')?.errors" class="my-2 text-red-600">This field is required</div>
+
+        <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price *</label>
+        <input formControlName="price" type="number" name="price" id="price" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" [required]="!productId">
+        <div *ngIf="productForm.get('price')?.touched && productForm.get('price')?.errors" class="my-2 text-red-600">This field is required</div>
+
+        <label for="stock_on_hand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Stock on hand *</label>
+        <input formControlName="stock_on_hand" type="number" name="stock_on_hand" id="stock_on_hand" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" [required]="!productId">
+        <div *ngIf="productForm.get('stock_on_hand')?.touched && productForm.get('stock_on_hand')?.errors" class="my-2 text-red-600">This field is required</div>
+
+
+        <div *ngIf="error" class="my-2 text-red-600">{{error}}</div>
+        <br/>
+
+        <button class="primary" type="submit" [disabled]="productForm.invalid"> {{ productId ? 'Save changes' : 'Create product' }} </button>
+        <button class="secondary ml-4" (click)="back()"> Cancel </button>
+    </form>
+</section>
