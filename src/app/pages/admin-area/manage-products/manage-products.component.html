@@ -16,7 +16,15 @@
                     {{ cell.value | productFeatures }}
                 </td>
                 <td>
-                    <button class="primary small mx-2">Update</button>
+                    <ng-container *ngIf="!deleteConfirmationPending[entry.id]">
+                        <button class="primary small mx-2" routerLink="/admin/manage-products/{{entry.id}}">Modify</button>
+                        <button class="primary small mx-2" (click)="confirmDelete(entry.id)">Delete</button>
+                    </ng-container>
+                    <ng-container *ngIf="deleteConfirmationPending[entry.id]">
+                        <label> Delete this product? </label>
+                        <button class="safe small mx-2" (click)="cancelDelete(entry.id)">No</button>
+                        <button class="danger small mx-2" (click)="deleteProduct(entry.id)">Yes</button>
+                    </ng-container>
                 </td>
             </tr>
         </tbody>

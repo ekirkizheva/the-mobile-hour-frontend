@@ -13,10 +13,29 @@ export class ManageProductsComponent {
   // Preserve original property order
   originalOrder = (...args: any): number => 0;
 
+  deleteConfirmationPending: {[key:number]: boolean} = {};
+
   products$: Observable<Product[]>;
 
   constructor(private manageProductService: ManageProductsService) {
     this.products$ = this.manageProductService.products$;
+  }
+
+  confirmDelete(id:number) {
+    this.deleteConfirmationPending[id] = true;
+  }
+
+  cancelDelete(id:number) {
+    this.deleteConfirmationPending[id] = false;
+  }
+
+  deleteProduct(id:number) {
+    // this.manageUsersService.deleteUser(id)
+    // .pipe(
+    //   tap(() => this.deleteConfirmationPending[id] = false),
+    //   tap(() => this.reloadSubject.next())
+    // )
+    // .subscribe();
   }
 
 }

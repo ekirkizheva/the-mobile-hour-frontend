@@ -1,6 +1,6 @@
 <section class="flex flex-col items-center justify-center py-5">
     <h2 class="font-bold text-2xl py-5">{{ productId ? 'Modify' : 'Create new' }} product</h2>
-    <form [formGroup]="productForm" class="space-y-2 w-96" (ngSubmit)="onSubmit()">
+    <form [formGroup]="productForm" class="space-y-2 w-full" (ngSubmit)="onSubmit()">
         <label for="product_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product name *</label>
         <input formControlName="product_name" type="text" name="product_name" id="product_name" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
         <div *ngIf="productForm.get('product_name')?.touched && productForm.get('product_name')?.errors" class="my-2 text-red-600">This field is required</div>
@@ -21,8 +21,55 @@
         <input formControlName="stock_on_hand" type="number" name="stock_on_hand" id="stock_on_hand" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" [required]="!productId">
         <div *ngIf="productForm.get('stock_on_hand')?.touched && productForm.get('stock_on_hand')?.errors" class="my-2 text-red-600">This field is required</div>
 
+        <br/>
+
+        <label>Product features</label>
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead>
+                <tr>
+                    <th>weight</th>
+                    <th>dimensions</th>
+                    <th>os</th>
+                    <th>screensize</th>
+                    <th>resolution</th>
+                    <th>cpu</th>
+                    <th>ram</th>
+                    <th>storage</th>
+                    <th>battery</th>
+                    <th>rear_camera</th>
+                    <th>front_camera</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let feature of productForm.get('features')?.value">
+                    <td>{{feature.weight}}</td>
+                    <td>{{feature.dimensions}}</td>
+                    <td>{{feature.os}}</td>
+                    <td>{{feature.screensize}}</td>
+                    <td>{{feature.resolution}}</td>
+                    <td>{{feature.cpu}}</td>
+                    <td>{{feature.ram}}</td>
+                    <td>{{feature.storage}}</td>
+                    <td>{{feature.battery}}</td>
+                    <td>{{feature.rear_camera}}</td>
+                    <td>{{feature.front_camera}}</td>
+                    <td>
+                        <button class="primary small"> Modify </button>
+                        <button class="primary small"> Delete </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ng-container>
+            
+        </ng-container>
+
+        <button class="primary small"> Add feature </button>
 
         <div *ngIf="error" class="my-2 text-red-600">{{error}}</div>
+
         <br/>
 
         <button class="primary" type="submit" [disabled]="productForm.invalid"> {{ productId ? 'Save changes' : 'Create product' }} </button>

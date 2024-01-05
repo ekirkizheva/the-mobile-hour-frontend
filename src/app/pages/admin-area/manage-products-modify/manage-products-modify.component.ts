@@ -31,7 +31,7 @@ export class ManageProductsModifyComponent {
   }
 
   back() {
-    this.router.navigate(['admin/manage-users']);
+    this.router.navigate(['admin/manage-products']);
   }
 
   onSubmit() {
