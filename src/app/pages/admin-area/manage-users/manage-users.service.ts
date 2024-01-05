@@ -13,4 +13,8 @@ export class ManageUsersService {
   get users$(): Observable<User[]> {
     return this.http.get<User[]>('/api/admin/user');
   }
+
+  deleteUser(id:number) {
+    return this.http.delete(`/api/admin/user/${id}`);
+  }
 }

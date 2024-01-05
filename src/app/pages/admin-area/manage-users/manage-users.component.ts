@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { User } from 'src/app/shared/models/user.interface';
+import { Observable, startWith, Subject, switchMap, tap } from 'rxjs';
 import { ManageUsersService } from './manage-users.service';
 
 @Component({
@@ -15,8 +14,33 @@ export class ManageUsersComponent {
 
     users$: Observable<any>;
 
+    reloadSubject: Subject<void> = new Subject();
+
+    deleteConfirmationPending: {[key:number]: boolean} = {};
+
     constructor(private manageUsersService: ManageUsersService) {
-      this.users$ = this.manageUsersService.users$;
+      this.users$ = this.reloadSubject.asObservable().pipe(
+        startWith(0),
+        switchMap(() => this.manageUsersService.users$)
+      );
+    }
+
+    confirmDelete(id:number) {
+      this.deleteConfirmationPending[id] = true;
+    }
+
+    cancelDelete(id:number) {
+      this.deleteConfirmationPending[id] = false;
+    }
+
+
+    deleteUser(id:number) {
+      this.manageUsersService.deleteUser(id)
+      .pipe(
+        tap(() => this.deleteConfirmationPending[id] = false),
+        tap(() => this.reloadSubject.next())
+      )
+      .subscribe();
     }
 
 }
