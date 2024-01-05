@@ -21,5 +21,6 @@
         <br/>
 
         <button class="primary" type="submit" [disabled]="userForm.invalid"> {{ userId ? 'Save changes' : 'Create user' }} </button>
+        <button class="secondary ml-4" (click)="back()"> Cancel </button>
     </form>
 </section>

@@ -44,6 +44,10 @@ export class ManageUsersModifyComponent implements OnInit {
     }
   }
 
+  back() {
+    this.router.navigate(['admin/manage-users']);
+  }
+
   onSubmit() {
     this.userForm.markAsTouched();
     if (this.userForm.valid) {
