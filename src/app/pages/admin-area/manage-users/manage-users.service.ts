@@ -1,6 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { USERS_MOCK } from 'src/app/shared/constants/users.mock';
+import { Observable } from 'rxjs';
 import { User } from 'src/app/shared/models/user.interface';
 
 @Injectable({
@@ -8,9 +8,9 @@ import { User } from 'src/app/shared/models/user.interface';
 })
 export class ManageUsersService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   get users$(): Observable<User[]> {
-    return of(USERS_MOCK);
+    return this.http.get<User[]>('/api/admin/users');
   }
 }

@@ -30,22 +30,17 @@ export class IdentityService {
     }
   }
 
+  logout() {
+    localStorage.removeItem('auth');
+    this.user.next({});
+  }
+
   login(username: string, password: string): Observable<any> {
     return this.http.post<{access_token: string}>('/api/singin', {username, password}).pipe(
       tap(({access_token}) => localStorage.setItem('auth', access_token)), 
       tap(({access_token}) => this.user.next(new JwtHelperService().decodeToken(access_token) || {})),
       switchMap(() => this.user$),
       take(1));
-
-    // if (username === 'admin' && password === 'admin') {
-    //   this.user.next({
-    //     username: 'admin',
-    //     isAdmin: true,
-    //     isLoggedIn: true
-    //   })
-    //   return this.user$;
-    // } 
-    // return throwError(() => new Error('Invalid username / password provided'))
   }
 
   get user$(): Observable<User> {
