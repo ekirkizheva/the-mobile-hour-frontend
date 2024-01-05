@@ -6,7 +6,7 @@ import { AdminAreaRoutingModule } from './admin-area.routing.module';
 import { ChangeLogComponent } from './change-log/change-log.component';
 import { HomeComponent } from './home/home.component';
 import { ManageProductsComponent } from './manage-products/manage-products.component';
-import { ManageUsersAddComponent } from './manage-users-add/manage-users-add.component';
+import { ManageUsersModifyComponent } from './manage-users-modify/manage-users-modify.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 
 @NgModule({
@@ -15,7 +15,7 @@ import { ManageUsersComponent } from './manage-users/manage-users.component';
     ChangeLogComponent,
     ManageUsersComponent,
     ManageProductsComponent,
-    ManageUsersAddComponent
+    ManageUsersModifyComponent
   ],
   imports: [
     CommonModule,

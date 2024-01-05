@@ -33,7 +33,6 @@ export class ManageUsersComponent {
       this.deleteConfirmationPending[id] = false;
     }
 
-
     deleteUser(id:number) {
       this.manageUsersService.deleteUser(id)
       .pipe(

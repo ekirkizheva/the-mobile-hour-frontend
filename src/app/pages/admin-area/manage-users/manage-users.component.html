@@ -16,10 +16,12 @@
                     {{ cell.value }}
                 </td>
                 <td>
-                    <button *ngIf="!deleteConfirmationPending[entry.id]" class="primary small mx-2">Modify</button>
-                    <button *ngIf="!deleteConfirmationPending[entry.id]" class="primary small mx-2" (click)="confirmDelete(entry.id)">Delete</button>
+                    <ng-container *ngIf="!deleteConfirmationPending[entry.id]">
+                        <button class="primary small mx-2" routerLink="/admin/manage-users/{{entry.id}}">Modify</button>
+                        <button class="primary small mx-2" (click)="confirmDelete(entry.id)">Delete</button>
+                    </ng-container>
                     <ng-container *ngIf="deleteConfirmationPending[entry.id]">
-                        <label> Do you really want to delete this user? </label>
+                        <label> Delete this user? </label>
                         <button class="safe small mx-2" (click)="cancelDelete(entry.id)">No</button>
                         <button class="danger small mx-2" (click)="deleteUser(entry.id)">Yes</button>
                     </ng-container>
