@@ -42,7 +42,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let feature of productForm.get('features')?.value">
+                <tr *ngFor="let feature of productForm.get('features')?.value; let i = index">
                     <td>{{feature.weight}}</td>
                     <td>{{feature.dimensions}}</td>
                     <td>{{feature.os}}</td>
@@ -62,7 +62,7 @@
                         <ng-container *ngIf="deleteConfirmationPending[feature.id]">
                             <label> Delete this feature? </label>
                             <button class="safe small mx-2" (click)="cancelDelete(feature.id)">No</button>
-                            <button class="danger small mx-2" (click)="deleteFeature(feature.id)">Yes</button>
+                            <button class="danger small mx-2" (click)="deleteFeature(i)">Yes</button>
                         </ng-container>
                     </td>
                 </tr>

@@ -73,7 +73,9 @@ export class ManageProductsModifyComponent implements OnInit {
   }
 
   deleteFeature(id:number) {
-
+    const features = [...this.productForm.get('features')?.value];
+    features.splice(id,1);
+    this.productForm.patchValue({ features });
   }
 
   onSubmit() {
