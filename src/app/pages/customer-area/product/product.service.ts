@@ -19,7 +19,5 @@ export class ProductService {
     return this.http.get<Product[]>(`/api/public/product/${id}`).pipe(
       map((products) => products[0])
     );
-    //const mock = MOCK_PRODUCTS as unknown as Product[];
-    //return of(mock[id]);
   }
 }
