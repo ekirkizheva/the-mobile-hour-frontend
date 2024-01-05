@@ -55,18 +55,39 @@
                     <td>{{feature.rear_camera}}</td>
                     <td>{{feature.front_camera}}</td>
                     <td>
-                        <button class="primary small"> Modify </button>
-                        <button class="primary small"> Delete </button>
+                        <ng-container *ngIf="!deleteConfirmationPending[feature.id]">
+                            <button class="primary small mx-2" routerLink="/admin/manage-products/{{feature.id}}">Modify</button>
+                            <button class="primary small mx-2" (click)="confirmDelete(feature.id)">Delete</button>
+                        </ng-container>
+                        <ng-container *ngIf="deleteConfirmationPending[feature.id]">
+                            <label> Delete this feature? </label>
+                            <button class="safe small mx-2" (click)="cancelDelete(feature.id)">No</button>
+                            <button class="danger small mx-2" (click)="deleteFeature(feature.id)">Yes</button>
+                        </ng-container>
                     </td>
+                </tr>
+                <tr *ngIf="isNewFeatureVisible" [formGroup]="newFeatureForm">
+                    <td><input formControlName="weight" type="text" placeholder="weight" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-0.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /></td>
+                    <td><input formControlName="dimensions" type="text" placeholder="dimensions" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-0.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /></td>
+                    <td><input formControlName="os" type="text" placeholder="os" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-0.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /></td>
+                    <td><input formControlName="screensize" type="text" placeholder="screensize" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-0.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /></td>
+                    <td><input formControlName="resolution" type="text" placeholder="resolution" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-0.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /></td>
+                    <td><input formControlName="cpu" type="text" placeholder="cpu" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-0.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /></td>
+                    <td><input formControlName="ram" type="text" placeholder="ram" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-0.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /></td>
+                    <td><input formControlName="storage" type="text" placeholder="storage" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-0.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /></td>
+                    <td><input formControlName="battery" type="text" placeholder="battery" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-0.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /></td>
+                    <td><input formControlName="rear_camera" type="text" placeholder="rear camera" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-0.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /></td>
+                    <td><input formControlName="front_camera" type="text" placeholder="front camera" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-0.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" /></td>
+                    <td><button class="safe small mx-2" type="button" (click)="addFeature()">Add</button></td>
                 </tr>
             </tbody>
         </table>
 
         <ng-container>
-            
+            <!-- Feature modifier goes here -->
         </ng-container>
 
-        <button class="primary small"> Add feature </button>
+        <button *ngIf="!isNewFeatureVisible" class="primary small" type="button" (click)="isNewFeatureVisible = true"> Add feature </button>
 
         <div *ngIf="error" class="my-2 text-red-600">{{error}}</div>
 
