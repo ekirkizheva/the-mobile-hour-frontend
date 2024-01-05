@@ -6,11 +6,11 @@ import { User } from 'src/app/shared/models/user.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class ManageUsersService {
-
+export class ManageUsersAddService {
+  
   constructor(private http: HttpClient) { }
 
-  get users$(): Observable<User[]> {
-    return this.http.get<User[]>('/api/admin/user');
+  createUser(user: User): Observable<User> {
+    return this.http.post<User>('/api/admin/user', user);
   }
 }

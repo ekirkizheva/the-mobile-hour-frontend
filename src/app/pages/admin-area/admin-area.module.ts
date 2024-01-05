@@ -1,22 +1,27 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home/home.component';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { AdminAreaRoutingModule } from './admin-area.routing.module';
 import { ChangeLogComponent } from './change-log/change-log.component';
-import { ManageUsersComponent } from './manage-users/manage-users.component';
+import { HomeComponent } from './home/home.component';
 import { ManageProductsComponent } from './manage-products/manage-products.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { ManageUsersAddComponent } from './manage-users-add/manage-users-add.component';
+import { ManageUsersComponent } from './manage-users/manage-users.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     ChangeLogComponent,
     ManageUsersComponent,
-    ManageProductsComponent
+    ManageProductsComponent,
+    ManageUsersAddComponent
   ],
   imports: [
     CommonModule,
     AdminAreaRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     SharedModule
   ]
 })

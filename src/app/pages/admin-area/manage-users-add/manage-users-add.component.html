@@ -1,0 +1,25 @@
+<section class="flex flex-col items-center justify-center py-5">
+    <h2 class="font-bold text-2xl py-5">Add new admin user</h2>
+    <form [formGroup]="userForm" class="space-y-2 w-96" (ngSubmit)="onSubmit()">
+        <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username *</label>
+        <input formControlName="username" type="text" name="username" id="username" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+        <div *ngIf="userForm.get('username')?.touched && userForm.get('username')?.errors" class="my-2 text-red-600">This field is required</div>
+
+        <label for="firstname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Firstname *</label>
+        <input formControlName="firstName" type="text" name="firstname" id="firstname" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+        <div *ngIf="userForm.get('firstName')?.touched && userForm.get('firstName')?.errors" class="my-2 text-red-600">This field is required</div>
+
+        <label for="lastname" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lastname *</label>
+        <input formControlName="lastName" type="text" name="lastname" id="lastname" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+        <div *ngIf="userForm.get('lastName')?.touched && userForm.get('lastName')?.errors" class="my-2 text-red-600">This field is required</div>
+
+        <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password *</label>
+        <input formControlName="user_password" type="password" name="password" id="password" class="w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+        <div *ngIf="userForm.get('user_password')?.touched && userForm.get('user_password')?.errors" class="my-2 text-red-600">This field is required</div>
+
+        <div *ngIf="error" class="my-2 text-red-600">{{error}}</div>
+        <br/>
+
+        <button class="primary" type="submit" [disabled]="userForm.invalid"> Create user </button>
+    </form>
+</section>
