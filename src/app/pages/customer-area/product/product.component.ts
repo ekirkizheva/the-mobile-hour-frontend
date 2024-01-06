@@ -12,6 +12,7 @@ import { ProductService } from './product.service';
 })
 export class ProductComponent {
 
+  selectedFeature = 0;
   // Storing observable of product.
   product$: Observable<Product>;
 

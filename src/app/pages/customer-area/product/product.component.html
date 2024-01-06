@@ -8,10 +8,24 @@
   />
   <article class="w-full md:w-1/3 text-lg">
     <h2 class="font-bold text-2xl">{{ prd.manufacturer }}</h2>
-    <h3 class="text-2xl">{{ prd.product_name }} {{ prd.product_model }}</h3>
-    <br />
-    <br />
+    <h3 class="text-2xl mb-4">{{ prd.product_name }} {{ prd.product_model }}</h3>
     <form>
+      <div *ngIf="prd.features.length" class="mb-4">
+        <h4 class="font-semibold text-xl mb-2">Product features</h4>
+        <ul class="text-sm">
+          <li><strong>Weight:</strong> {{prd.features[selectedFeature].weight}}</li>
+          <li><strong>Dimensions:</strong> {{prd.features[selectedFeature].dimensions}}</li>
+          <li><strong>OS:</strong> {{prd.features[selectedFeature].os}}</li>
+          <li><strong>Screensize:</strong> {{prd.features[selectedFeature].screensize}}</li>
+          <li><strong>Resolution:</strong> {{prd.features[selectedFeature].resolution}}</li>
+          <li><strong>CPU:</strong> {{prd.features[selectedFeature].cpu}}</li>
+          <li><strong>RAM:</strong> {{prd.features[selectedFeature].ram}}</li>
+          <li><strong>Storage:</strong> {{prd.features[selectedFeature].storage}}</li>
+          <li><strong>Battery:</strong> {{prd.features[selectedFeature].battery}}</li>
+          <li><strong>Rear Camera:</strong> {{prd.features[selectedFeature].rear_camera}}</li>
+          <li><strong>Front Camera:</strong> {{prd.features[selectedFeature].front_camera}}</li>
+        </ul>
+      </div>
       <!-- <fieldset class="flex" role="radiogroup">
         <legend>Choose your colour:</legend>
         <ng-container *ngFor="let color of prd.colorsAvailable">
@@ -33,13 +47,14 @@
       <br /> -->
       <fieldset *ngIf="prd.features.length" class="flex" role="radiogroup">
         <legend>Choose your capacity</legend>
-        <ng-container *ngFor="let feature of prd.features">
+        <ng-container *ngFor="let feature of prd.features; let i = index">
           <input
             class="sr-only"
             name="capacityOption"
             value="capacity"
             type="radio"
             [id]="feature.storage"
+            (click)="selectedFeature = i"
           />
           <label class="capacity-option" [for]="feature.storage">{{
             feature.storage
@@ -57,8 +72,6 @@
         type="number"
       />
       <button class="primary small">Add to cart</button>
-      <br />
-      <!-- <span class="text-sm">{{ prd.sku }}</span> -->
     </form>
   </article>
 </section>
