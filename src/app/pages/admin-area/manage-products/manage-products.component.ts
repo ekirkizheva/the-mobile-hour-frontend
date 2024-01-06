@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, startWith, Subject, switchMap, tap } from 'rxjs';
 import { Product } from 'src/app/shared/models/product.interface';
 import { ManageProductsService } from './manage-products.service';
 
@@ -17,8 +17,13 @@ export class ManageProductsComponent {
 
   products$: Observable<Product[]>;
 
+  reloadSubject: Subject<void> = new Subject();
+
   constructor(private manageProductService: ManageProductsService) {
-    this.products$ = this.manageProductService.products$;
+    this.products$ = this.reloadSubject.asObservable().pipe(
+      startWith(0),
+      switchMap(() => this.manageProductService.products$)
+    );
   }
 
   confirmDelete(id:number) {
@@ -30,12 +35,12 @@ export class ManageProductsComponent {
   }
 
   deleteProduct(id:number) {
-    // this.manageUsersService.deleteUser(id)
-    // .pipe(
-    //   tap(() => this.deleteConfirmationPending[id] = false),
-    //   tap(() => this.reloadSubject.next())
-    // )
-    // .subscribe();
+    this.manageProductService.deleteProduct(id)
+    .pipe(
+      tap(() => this.deleteConfirmationPending[id] = false),
+      tap(() => this.reloadSubject.next())
+    )
+    .subscribe();
   }
 
 }

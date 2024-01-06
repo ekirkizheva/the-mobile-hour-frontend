@@ -13,4 +13,8 @@ export class ManageProductsService {
   get products$(): Observable<Product[]> {
     return this.http.get<Product[]>('/api/public/product');
   }
+
+  deleteProduct(id: number) {
+    return this.http.delete<Product>(`/api/admin/product/${id}`);
+  }
 }
