@@ -12,4 +12,8 @@ export class ManageProductsModifyService {
   getProduct(id:number): Observable<Product> {
     return this.http.get<Product>(`/api/public/product/${id}`);
   }
+
+  modifyProduct(id:number, product: Product) {
+    return this.http.put<Product>(`/api/admin/product/${id}`, product);
+  }
 }

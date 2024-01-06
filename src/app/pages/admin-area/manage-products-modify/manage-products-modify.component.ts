@@ -19,15 +19,17 @@ export class ManageProductsModifyComponent implements OnInit {
   isNewFeatureVisible = false;
   
   productForm = this.fb.group({
+    id: ['', Validators.required],
     product_name: ['', Validators.required],
     product_model: ['', Validators.required],
     manufacturer: ['', Validators.required],
     price: ['', Validators.required],
     stock_on_hand: ['', Validators.required],
-    features: [[], Validators.required]
+    features: [[]]
   });
 
   newFeatureForm = this.fb.group({
+    id: [''],
     weight: ['', Validators.required],
     dimensions: ['', Validators.required],
     os: ['', Validators.required],
@@ -79,13 +81,23 @@ export class ManageProductsModifyComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('sumbit called');
+    if (this.productForm.valid){
+      if (this.productId) {
+        this.manageProductsModifyService.modifyProduct(+this.productId, this.productForm.value).subscribe({
+          next: () => this.router.navigate(['admin/manage-products']),
+          error: (error) => this.error = error.message
+        });
+      }
+    }
   }
 
   addFeature() {
+    // Making sure that new features do not come with IDs as those will be auto generated in the DB
+    const newFeature = this.newFeatureForm.value;
+    delete newFeature.id;
+
     this.isNewFeatureVisible = false;
-    this.productForm.get('features')?.value.push(this.newFeatureForm.value);
+    this.productForm.get('features')?.value.push(newFeature);
     this.newFeatureForm.reset();
-    console.log('add feature called');
   }
 }
