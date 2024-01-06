@@ -19,7 +19,7 @@ export class ManageProductsModifyComponent implements OnInit {
   isNewFeatureVisible = false;
   
   productForm = this.fb.group({
-    id: ['', Validators.required],
+    id: [''],
     product_name: ['', Validators.required],
     product_model: ['', Validators.required],
     manufacturer: ['', Validators.required],
@@ -87,7 +87,17 @@ export class ManageProductsModifyComponent implements OnInit {
           next: () => this.router.navigate(['admin/manage-products']),
           error: (error) => this.error = error.message
         });
-      }
+      } else {
+        // Making sure that new product does not come with ID as this will be auto generated in the DB
+        const product = this.productForm.value;
+        delete product.id;
+
+        this.manageProductsModifyService.createProduct(product)
+        .subscribe({
+          next: () => this.router.navigate(['admin/manage-products']),
+          error: (error) => this.error = error.message
+        });
+      } 
     }
   }
 

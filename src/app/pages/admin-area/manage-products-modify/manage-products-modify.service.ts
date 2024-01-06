@@ -13,6 +13,10 @@ export class ManageProductsModifyService {
     return this.http.get<Product>(`/api/public/product/${id}`);
   }
 
+  createProduct(product: Product) {
+    return this.http.post<Product>('/api/admin/product', product);
+  }
+
   modifyProduct(id:number, product: Product) {
     return this.http.put<Product>(`/api/admin/product/${id}`, product);
   }
