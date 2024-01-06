@@ -31,7 +31,7 @@
       </fieldset>
       <br />
       <br /> -->
-      <fieldset class="flex" role="radiogroup">
+      <fieldset *ngIf="prd.features.length" class="flex" role="radiogroup">
         <legend>Choose your capacity</legend>
         <ng-container *ngFor="let feature of prd.features">
           <input
