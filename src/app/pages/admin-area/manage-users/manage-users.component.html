@@ -18,12 +18,12 @@
                 <td>
                     <ng-container *ngIf="!deleteConfirmationPending[entry.id]">
                         <button class="primary small mx-2" routerLink="/admin/manage-users/{{entry.id}}">Modify</button>
-                        <button class="primary small mx-2" (click)="confirmDelete(entry.id)">Delete</button>
+                        <button class="primary small mx-2" type="button" (click)="confirmDelete(entry.id)">Delete</button>
                     </ng-container>
                     <ng-container *ngIf="deleteConfirmationPending[entry.id]">
                         <label> Delete this user? </label>
-                        <button class="safe small mx-2" (click)="cancelDelete(entry.id)">No</button>
-                        <button class="danger small mx-2" (click)="deleteUser(entry.id)">Yes</button>
+                        <button class="safe small mx-2" type="button" (click)="cancelDelete(entry.id)">No</button>
+                        <button class="danger small mx-2" type="button" (click)="deleteUser(entry.id)">Yes</button>
                     </ng-container>
                 </td>
             </tr>

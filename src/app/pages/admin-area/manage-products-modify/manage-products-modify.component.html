@@ -56,13 +56,13 @@
                     <td>{{feature.front_camera}}</td>
                     <td>
                         <ng-container *ngIf="!deleteConfirmationPending[feature.id]">
-                            <button class="primary small mx-2" routerLink="/admin/manage-products/{{feature.id}}">Modify</button>
-                            <button class="primary small mx-2" (click)="confirmDelete(feature.id)">Delete</button>
+                            <!-- <button class="primary small mx-2" routerLink="/admin/manage-products/{{feature.id}}">Modify</button> -->
+                            <button class="primary small mx-2" type="button" (click)="confirmDelete(feature.id)">Delete</button>
                         </ng-container>
                         <ng-container *ngIf="deleteConfirmationPending[feature.id]">
                             <label> Delete this feature? </label>
-                            <button class="safe small mx-2" (click)="cancelDelete(feature.id)">No</button>
-                            <button class="danger small mx-2" (click)="deleteFeature(i)">Yes</button>
+                            <button class="safe small mx-2" type="button" (click)="cancelDelete(feature.id)">No</button>
+                            <button class="danger small mx-2" type="button" (click)="deleteFeature(i)">Yes</button>
                         </ng-container>
                     </td>
                 </tr>
