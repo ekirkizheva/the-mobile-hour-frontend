@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ChangeLog } from 'src/app/shared/models/change-log.interface';
 
 @Injectable({
@@ -7,9 +8,9 @@ import { ChangeLog } from 'src/app/shared/models/change-log.interface';
 })
 export class ChangeLogService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   get changeLog$(): Observable<ChangeLog[]> {
-    return of([]);
+    return this.http.get<ChangeLog[]>('/api/admin/changelog');
   }
 }

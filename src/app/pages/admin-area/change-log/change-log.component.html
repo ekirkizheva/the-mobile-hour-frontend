@@ -9,7 +9,7 @@
     <tbody>
         <tr *ngFor="let entry of changeLog" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
             <td *ngFor="let cell of entry | keyvalue: originalOrder" class="px-6 py-3">
-                {{ cell.value }}
+                {{ cell.key !== 'product' ? cell.value : cell.value | json }}
             </td>
         </tr>
     </tbody>
